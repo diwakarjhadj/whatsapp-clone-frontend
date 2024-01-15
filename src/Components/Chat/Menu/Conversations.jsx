@@ -17,9 +17,11 @@ opacity: 0.6;`;
 const Conversations = ({text}) => {
   const [users, setUser] = useState([]);
   const { account } = useContext(AccountContext);
+  console.log("account",{account});
   useEffect(() => {
     const fetchData = async () => {
       let res = await getUsers();
+      console.log("users",res);
       const filteredData=res.filter(user=>user.name.toLowerCase().includes(text.toLowerCase()))
       setUser(filteredData);
     }

@@ -22,6 +22,7 @@ box-shadow: none
 
 const Messanger = () => {
     const { account } = useContext(AccountContext);
+    console.log({account})
     return (
         <>
             <Component>

@@ -16,7 +16,7 @@ const ChatBox = () => {
         getConversationDetails();
     },[person.sub])
   return (
-    <Box>
+    <Box style={{height: '75%'}}>
         <ChatHeader person={person}/>
         <Messages person={person} conversation={conversation}/> 
        
