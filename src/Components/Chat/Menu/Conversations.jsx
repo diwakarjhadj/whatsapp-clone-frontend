@@ -16,7 +16,7 @@ opacity: 0.6;`;
 
 const Conversations = ({text}) => {
   const [users, setUser] = useState([]);
-  const { account } = useContext(AccountContext);
+  const { account,socket,setActiveUsers } = useContext(AccountContext);
   console.log("account",{account});
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +27,12 @@ const Conversations = ({text}) => {
     }
     fetchData();
   }, [text]);
+  useEffect(()=>{
+    socket.current.emit('addUsers', account);
+    socket.current.on('getUsers',users=>{
+      setActiveUsers(users);
+    })
+  },[account]);
   return (
     <Component>
       {
